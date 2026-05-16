@@ -39,16 +39,16 @@ const Hero = () => {
       </div>
 
       {/* Content */}
-      <div className="relative h-full container-wide flex flex-col justify-end pb-24 md:pb-32">
+      <div className="relative h-full container-wide flex flex-col justify-end pt-28 pb-20 md:pb-28">
         <div className="max-w-3xl text-background animate-fade-up">
           <span className="inline-flex items-center gap-3 text-xs uppercase tracking-[0.3em] text-background/80 mb-6">
             <span className="h-px w-10 bg-background/60" />
             Est. 2014 · Slow Travel Atelier
           </span>
-          <h1 className="font-display text-balance text-5xl md:text-7xl lg:text-8xl leading-[0.95] mb-8">
+          <h1 className="font-display text-balance leading-[1] mb-8 text-[clamp(2.25rem,6vw,5.5rem)]">
             The world is waiting <em className="text-highlight">— quietly,</em> just over the horizon.
           </h1>
-          <p className="text-pretty text-lg md:text-xl text-background/80 max-w-xl mb-10 leading-relaxed">
+          <p className="text-pretty text-base md:text-lg text-background/80 max-w-xl mb-10 leading-relaxed">
             Hand-crafted journeys to the places that move us. Fewer stops, deeper meaning, longer evenings.
           </p>
           <div className="flex flex-wrap gap-4">
