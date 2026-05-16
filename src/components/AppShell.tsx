@@ -1,5 +1,5 @@
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import { Car, History, LayoutDashboard, LogOut, Menu, Phone, Steering, X } from "lucide-react";
+import { Car, History, LayoutDashboard, LogOut, Menu, Phone, Navigation2, X } from "lucide-react";
 import { useState } from "react";
 import { useAuth } from "@/hooks/useAuth";
 import { Button } from "@/components/ui/button";
@@ -19,7 +19,7 @@ const AppShell = ({ children }: { children: React.ReactNode }) => {
   const navItems = [
     { to: "/app", icon: LayoutDashboard, label: "Home", end: true },
     { to: "/app/request", icon: Car, label: "Request ride" },
-    ...(isDriver ? [{ to: "/app/drive", icon: Steering, label: "Drive" }] : []),
+    ...(isDriver ? [{ to: "/app/drive", icon: Navigation2, label: "Drive" }] : []),
     { to: "/app/history", icon: History, label: "History" },
   ];
 
