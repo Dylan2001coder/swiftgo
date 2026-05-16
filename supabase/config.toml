@@ -1,1 +1,2 @@
-project_id = "ruyyhlqyjpiaflgedroj"
+[functions.ussd-handler]
+verify_jwt = false
