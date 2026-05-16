@@ -1,0 +1,2 @@
+[functions.ussd-handler]
+verify_jwt = false
