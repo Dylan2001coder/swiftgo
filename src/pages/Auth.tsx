@@ -80,18 +80,18 @@ const Auth = () => {
 
   return (
     <div className="min-h-screen grid md:grid-cols-2">
-      <div className="hidden md:flex relative bg-surface text-white p-12 flex-col justify-between bg-mesh">
-        <Link to="/" className="flex items-center gap-2 text-white">
+      <div className="hidden md:flex relative bg-secondary p-12 flex-col justify-between">
+        <Link to="/" className="flex items-center gap-2 text-foreground">
           <div className="h-9 w-9 rounded-xl bg-gradient-primary grid place-items-center shadow-glow">
             <Car className="h-5 w-5 text-primary-foreground" strokeWidth={2.5} />
           </div>
           <span className="font-bold text-xl">SwiftGo</span>
         </Link>
         <div className="max-w-md">
-          <h2 className="text-4xl font-bold leading-tight mb-4">Move your way.<br />Name your fare.</h2>
-          <p className="text-white/70 text-lg">Join thousands riding and earning on the fairest ride-hailing platform.</p>
+          <h2 className="text-4xl font-bold leading-tight mb-4 text-foreground">Move your way.<br />Name your fare.</h2>
+          <p className="text-muted-foreground text-lg">Join thousands riding and earning on the fairest ride-hailing platform.</p>
         </div>
-        <p className="text-xs text-white/40">© SwiftGo</p>
+        <p className="text-xs text-muted-foreground">© SwiftGo</p>
       </div>
 
       <div className="flex flex-col px-6 md:px-12 py-8 md:py-12">

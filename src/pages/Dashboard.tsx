@@ -24,23 +24,65 @@ const Dashboard = () => {
 
   useEffect(() => {
     if (!user) return;
-    supabase
-      .from("rides")
-      .select("id,pickup,dropoff,status,offered_fare,created_at")
-      .eq("rider_id", user.id)
-      .in("status", ["pending", "accepted", "in_progress"])
-      .order("created_at", { ascending: false })
-      .limit(1)
-      .maybeSingle()
-      .then(({ data }) => setActive(data as any));
 
-    supabase
-      .from("rides")
-      .select("id,pickup,dropoff,status,offered_fare,created_at")
-      .eq("rider_id", user.id)
-      .order("created_at", { ascending: false })
-      .limit(5)
-      .then(({ data }) => setRecent((data ?? []) as any));
+    // Initial fetch
+    const fetchRides = async () => {
+      const { data: activeData } = await supabase
+        .from("rides")
+        .select("id,pickup,dropoff,status,offered_fare,created_at")
+        .eq("rider_id", user.id)
+        .in("status", ["pending", "accepted", "in_progress"])
+        .order("created_at", { ascending: false })
+        .limit(1)
+        .maybeSingle();
+      setActive(activeData as any);
+
+      const { data: recentData } = await supabase
+        .from("rides")
+        .select("id,pickup,dropoff,status,offered_fare,created_at")
+        .eq("rider_id", user.id)
+        .order("created_at", { ascending: false })
+        .limit(5);
+      setRecent((recentData ?? []) as any);
+    };
+
+    fetchRides();
+
+    // Subscribe to real-time updates
+    const subscription = supabase
+      .channel(`rides:${user.id}`)
+      .on(
+        "postgres_changes",
+        {
+          event: "*",
+          schema: "public",
+          table: "rides",
+          filter: `rider_id=eq.${user.id}`,
+        },
+        (payload) => {
+          const ride = payload.new as any;
+          if (
+            ride.status === "pending" ||
+            ride.status === "accepted" ||
+            ride.status === "in_progress"
+          ) {
+            setActive(ride);
+          } else if (payload.eventType === "UPDATE") {
+            setActive(null);
+          }
+
+          // Update recent rides list
+          setRecent((prev) => {
+            const updated = prev.map((r) => (r.id === ride.id ? ride : r));
+            return [ride, ...updated.filter((r) => r.id !== ride.id)].slice(0, 5);
+          });
+        }
+      )
+      .subscribe();
+
+    return () => {
+      subscription.unsubscribe();
+    };
   }, [user]);
 
   return (
@@ -53,18 +95,18 @@ const Dashboard = () => {
           </div>
 
           {/* Quick action card */}
-          <div className="relative overflow-hidden rounded-3xl bg-surface text-white p-8 md:p-10 bg-mesh shadow-soft mb-8">
+          <div className="relative overflow-hidden rounded-3xl bg-secondary p-8 md:p-10 shadow-soft mb-8">
             <div className="relative max-w-xl">
               <span className="inline-flex items-center gap-2 text-xs uppercase tracking-wider text-primary font-semibold mb-3">
                 <Sparkles className="h-3.5 w-3.5" /> Quick request
               </span>
-              <h2 className="text-3xl md:text-4xl font-bold mb-3">Need a ride?</h2>
-              <p className="text-white/70 mb-6 max-w-md">Set your pickup, drop-off and the fare you want to pay. Drivers respond in seconds.</p>
+              <h2 className="text-3xl md:text-4xl font-bold mb-3 text-foreground">Need a ride?</h2>
+              <p className="text-muted-foreground mb-6 max-w-md">Set your pickup, drop-off and the fare you want to pay. Drivers respond in seconds.</p>
               <Button asChild size="lg" className="rounded-full bg-primary text-primary-foreground hover:bg-primary/90 shadow-glow">
                 <Link to="/app/request">Request a ride <ArrowRight className="ml-2 h-4 w-4" /></Link>
               </Button>
             </div>
-            <Car className="absolute -right-8 -bottom-8 h-64 w-64 text-white/5" strokeWidth={1} />
+            <Car className="absolute -right-8 -bottom-8 h-64 w-64 text-foreground/5" strokeWidth={1} />
           </div>
 
           {/* Active ride */}

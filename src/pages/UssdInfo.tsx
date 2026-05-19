@@ -27,11 +27,11 @@ const UssdInfo = () => {
           </ol>
         </div>
 
-        <div className="rounded-3xl bg-surface text-white p-6 md:p-8 bg-mesh">
-          <h2 className="font-bold text-xl mb-3">For operators</h2>
-          <p className="text-white/70 mb-4">Point your USSD gateway callback to:</p>
-          <code className="block bg-black/40 rounded-xl p-4 text-primary text-sm break-all">{ussdEndpoint}</code>
-          <p className="text-xs text-white/50 mt-4">
+        <div className="rounded-3xl bg-secondary p-6 md:p-8">
+          <h2 className="font-bold text-xl mb-3 text-foreground">For operators</h2>
+          <p className="text-muted-foreground mb-4">Point your USSD gateway callback to:</p>
+          <code className="block bg-background rounded-xl p-4 text-primary text-sm break-all">{ussdEndpoint}</code>
+          <p className="text-xs text-muted-foreground mt-4">
             Compatible with Africa's Talking USSD format (POST with sessionId, phoneNumber, text). Easily adapted for Twilio, Hubtel, etc.
           </p>
         </div>

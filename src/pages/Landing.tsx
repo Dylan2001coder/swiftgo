@@ -64,16 +64,16 @@ const Landing = () => {
       </section>
 
       {/* USSD highlight */}
-      <section className="bg-surface text-white py-20 md:py-28 bg-mesh">
+      <section className="bg-secondary py-20 md:py-28">
         <div className="container-wide grid md:grid-cols-2 gap-12 items-center">
           <div>
             <span className="inline-flex items-center gap-2 text-primary text-xs uppercase tracking-[0.2em] mb-4">
               <Wifi className="h-4 w-4" /> Offline mode
             </span>
-            <h2 className="text-4xl md:text-5xl font-bold leading-tight mb-6 text-balance">
+            <h2 className="text-4xl md:text-5xl font-bold leading-tight mb-6 text-balance text-foreground">
               No data, no problem. Dial <span className="text-primary">*123#</span> to ride.
             </h2>
-            <p className="text-white/70 text-lg leading-relaxed mb-8 max-w-lg">
+            <p className="text-muted-foreground text-lg leading-relaxed mb-8 max-w-lg">
               Any basic phone can request a ride through USSD. Pick up, drop off, and fare — all in a simple text menu. Your driver gets the request instantly in the app.
             </p>
             <Link to="/ussd" className="inline-flex items-center gap-2 text-primary font-semibold hover:gap-3 transition-all">
@@ -81,9 +81,9 @@ const Landing = () => {
             </Link>
           </div>
           <div className="relative">
-            <div className="mx-auto max-w-sm bg-black rounded-[2.5rem] border-8 border-zinc-800 shadow-2xl p-6 font-mono text-sm">
-              <div className="text-white/60 mb-2 text-[10px] tracking-widest">SWIFTGO • USSD</div>
-              <div className="bg-zinc-900 rounded-2xl p-4 text-green-400 leading-relaxed">
+            <div className="mx-auto max-w-sm bg-card rounded-[2.5rem] border border-border shadow-soft p-6 font-mono text-sm">
+              <div className="text-muted-foreground mb-2 text-[10px] tracking-widest">SWIFTGO • USSD</div>
+              <div className="bg-secondary rounded-2xl p-4 text-primary leading-relaxed">
                 <div className="opacity-70">&gt; *123#</div>
                 <div className="mt-2">Welcome to SwiftGo</div>
                 <div>1. Request a ride</div>
@@ -153,30 +153,30 @@ const Landing = () => {
       </section>
 
       {/* CTA */}
-      <section className="py-20 md:py-28 bg-surface text-white">
+      <section className="py-20 md:py-28 bg-secondary">
         <div className="container-wide text-center">
-          <h2 className="text-4xl md:text-6xl font-bold mb-6 text-balance max-w-3xl mx-auto leading-tight text-sky-400">
+          <h2 className="text-4xl md:text-6xl font-bold mb-6 text-balance max-w-3xl mx-auto leading-tight text-foreground">
             Your next ride is one tap away.
           </h2>
-          <p className="text-sky-300 text-lg mb-10 max-w-xl mx-auto">
+          <p className="text-muted-foreground text-lg mb-10 max-w-xl mx-auto">
             Sign up free in 60 seconds. Earn as a driver, save as a rider.
           </p>
           <Button asChild size="lg" className="rounded-full bg-primary text-primary-foreground hover:bg-primary/90 shadow-glow h-14 px-10 text-base">
-            <Link to="/auth" className="text-sky-400">Get started — it's free</Link>
+            <Link to="/auth">Get started — it's free</Link>
           </Button>
         </div>
       </section>
 
-      <footer className="bg-surface border-t border-white/10">
+      <footer className="bg-card border-t border-border">
         <div className="container-wide py-10 flex flex-col md:flex-row items-center justify-between gap-4 text-sm">
-          <div className="flex items-center gap-2 text-sky-400">
+          <div className="flex items-center gap-2 text-foreground">
             <Car className="h-4 w-4 text-primary" />
             <span>© {new Date().getFullYear()} SwiftGo. All rights reserved.</span>
           </div>
-          <div className="flex gap-6 text-sky-400">
-            <Link to="/ussd" className="hover:text-sky-300">USSD</Link>
-            <a href="#how" className="hover:text-sky-300">How it works</a>
-            <Link to="/auth" className="hover:text-sky-300">Sign in</Link>
+          <div className="flex gap-6 text-foreground">
+            <Link to="/ussd" className="hover:text-primary">USSD</Link>
+            <a href="#how" className="hover:text-primary">How it works</a>
+            <Link to="/auth" className="hover:text-primary">Sign in</Link>
           </div>
         </div>
       </footer>
