@@ -41,7 +41,7 @@ const Landing = () => {
             </span>
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold leading-[0.95] text-balance mb-6">
               Name your fare.<br />
-              <span className="bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent">Get moving</span> in minutes.
+              <span className="text-white">Get moving</span> in minutes.
             </h1>
             <p className="text-lg md:text-xl text-white/80 max-w-xl mb-10 leading-relaxed">
               SwiftGo is a fair, transparent ride-hailing platform — riders set the price, drivers accept or counter. Works on the web, on your phone, and even without data via USSD.
@@ -155,28 +155,28 @@ const Landing = () => {
       {/* CTA */}
       <section className="py-20 md:py-28 bg-surface text-white">
         <div className="container-wide text-center">
-          <h2 className="text-4xl md:text-6xl font-bold mb-6 text-balance max-w-3xl mx-auto leading-tight">
+          <h2 className="text-4xl md:text-6xl font-bold mb-6 text-balance max-w-3xl mx-auto leading-tight text-sky-400">
             Your next ride is one tap away.
           </h2>
-          <p className="text-white/70 text-lg mb-10 max-w-xl mx-auto">
+          <p className="text-sky-300 text-lg mb-10 max-w-xl mx-auto">
             Sign up free in 60 seconds. Earn as a driver, save as a rider.
           </p>
           <Button asChild size="lg" className="rounded-full bg-primary text-primary-foreground hover:bg-primary/90 shadow-glow h-14 px-10 text-base">
-            <Link to="/auth">Get started — it's free</Link>
+            <Link to="/auth" className="text-sky-400">Get started — it's free</Link>
           </Button>
         </div>
       </section>
 
-      <footer className="bg-surface text-white/60 border-t border-white/10">
+      <footer className="bg-surface border-t border-white/10">
         <div className="container-wide py-10 flex flex-col md:flex-row items-center justify-between gap-4 text-sm">
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 text-sky-400">
             <Car className="h-4 w-4 text-primary" />
             <span>© {new Date().getFullYear()} SwiftGo. All rights reserved.</span>
           </div>
-          <div className="flex gap-6">
-            <Link to="/ussd" className="hover:text-white">USSD</Link>
-            <a href="#how" className="hover:text-white">How it works</a>
-            <Link to="/auth" className="hover:text-white">Sign in</Link>
+          <div className="flex gap-6 text-sky-400">
+            <Link to="/ussd" className="hover:text-sky-300">USSD</Link>
+            <a href="#how" className="hover:text-sky-300">How it works</a>
+            <Link to="/auth" className="hover:text-sky-300">Sign in</Link>
           </div>
         </div>
       </footer>
